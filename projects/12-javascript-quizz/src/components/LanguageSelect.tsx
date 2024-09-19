@@ -5,59 +5,8 @@ import {
   ListItemText,
   Stack,
 } from '@mui/material';
-import { JavaScriptLogo } from './JavaScritLogo';
-import { HtmlLogo } from './HtmlLogo';
-import { CssLogo } from './CssLogo';
-import language from 'react-syntax-highlighter/dist/esm/languages/hljs/1c';
 import { useQuestionStore } from '../store/question';
-import { ReactLogo } from './ReactLogo';
-import { AngularLogo } from './AngularLogo';
-
-type Language = {
-  id: number;
-  name: string;
-  fileName: string;
-  language: typeof language;
-  svg: () => JSX.Element;
-};
-
-const LANGUAGES: Language[] = [
-  {
-    id: 1,
-    name: 'JavaScript',
-    language: 'javascript',
-    fileName: 'javascript',
-    svg: JavaScriptLogo,
-  },
-  {
-    id: 2,
-    name: 'HTML',
-    language: 'html',
-    fileName: 'html',
-    svg: HtmlLogo,
-  },
-  {
-    id: 3,
-    name: 'CSS',
-    language: 'css',
-    fileName: 'css',
-    svg: CssLogo,
-  },
-  {
-    id: 4,
-    name: 'React',
-    language: 'jsx',
-    fileName: 'react',
-    svg: ReactLogo,
-  },
-  {
-    id: 5,
-    name: 'Angular',
-    language: 'typescript',
-    fileName: 'angular',
-    svg: AngularLogo,
-  },
-];
+import { LANGUAGES } from '../constants/languages.constants';
 
 export const LanguageSelect = () => {
   const selectLanguage = useQuestionStore(
