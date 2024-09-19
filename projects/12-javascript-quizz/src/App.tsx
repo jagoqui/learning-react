@@ -1,26 +1,28 @@
 import { Container, Stack, Typography } from '@mui/material';
 import './App.css';
-import { JavaScriptLogo } from './components/JavaScritLogo';
 import { Start } from './components/Start';
 import { useQuestionStore } from './store/question';
 import { Game } from './components/Game';
+import { LanguageSelect } from './components/LanguageSelect';
 
 function App() {
-  const questions = useQuestionStore((state) => state.questions);
-  console.log(questions);
+  const questions = useQuestionStore(({ questions }) => questions);
+  const tecnologie = useQuestionStore(({ tecnologie }) => tecnologie);
+
   return (
     <main>
       <Container maxWidth="sm">
         <Stack
-          direction="row"
+          direction="column"
           spacing={2}
           alignItems="center"
           justifyContent="center"
+          pb={4}
         >
-          <JavaScriptLogo />
           <Typography variant="h2" component="h1">
-            JavaScript Quizz
+            Quizz {tecnologie.toUpperCase()}
           </Typography>
+          {!questions.length && <LanguageSelect />}
         </Stack>
         {questions.length ? <Game /> : <Start />}
       </Container>

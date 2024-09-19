@@ -35,7 +35,8 @@ const getBackgroundColor = (info: Question, index: number) => {
 };
 
 const Question = ({ info }: { info: Question }) => {
-  const selectAnswer = useQuestionStore((store) => store.selectAnswer);
+  const selectAnswer = useQuestionStore(({ selectAnswer }) => selectAnswer);
+  const language = useQuestionStore(({ language }) => language);
 
   const createHandledClick = (answerIndex: number) =>
     selectAnswer(info.id, answerIndex);
@@ -46,7 +47,7 @@ const Question = ({ info }: { info: Question }) => {
       sx={{ bgcolor: '#222', p: 2, textAlign: 'left', mt: 4 }}
     >
       <Typography variant="h5">{info.question}</Typography>
-      <SyntaxHighlighter language="javascript" style={gradientDark}>
+      <SyntaxHighlighter language={language} style={gradientDark}>
         {info.code}
       </SyntaxHighlighter>
       <List disablePadding sx={{ bgcolor: '#333' }}>
